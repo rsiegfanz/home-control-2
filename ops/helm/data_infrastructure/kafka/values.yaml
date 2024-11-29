@@ -19,6 +19,7 @@ kafka:
       memory: "1Gi"
 
   storage:
+    storageClassName: nfs_kafka
     type: persistentVolumeClaim
     size: 10Gi
     accessMode: ReadWriteOnce

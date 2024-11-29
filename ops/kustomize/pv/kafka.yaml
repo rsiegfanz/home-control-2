@@ -7,7 +7,7 @@ spec:
     storage: 10Gi
   accessModes:
     - ReadWriteOnce
-  storageClassName: ""
+  storageClassName: nfs_kafka
   nfs:
     server: 192.168.1.100
     path: /srv/nfs_shared_folder/k8s/kafka
@@ -18,7 +18,7 @@ metadata:
   name: kafka-pv-claim
   namespace: monitoring
 spec:
-  storageClassName: ""
+  storageClassName: nfs_kafka
   accessModes:
     - ReadWriteOnce
   resources:
