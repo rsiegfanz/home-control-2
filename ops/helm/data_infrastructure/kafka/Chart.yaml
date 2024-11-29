@@ -13,11 +13,9 @@ annotations:
 apiVersion: v2
 appVersion: 3.9.0
 dependencies:
-  - name: common
-    repository: oci://registry-1.docker.io/bitnamicharts
-    tags:
-      - bitnami-common
-    version: 2.x.x
+  - name: kafka
+    version: "3.9.0"
+    repository: "https://charts.bitnami.com/bitnami"
 description: Apache Kafka is a distributed streaming platform designed to build real-time pipelines and can be used as a message broker or as a replacement for a log aggregation solution for big data applications.
 home: https://bitnami.com
 icon: https://bitnami.com/assets/stacks/kafka/img/kafka-stack-220x234.png
