@@ -13,10 +13,6 @@ annotations:
 apiVersion: v2
 appVersion: 3.9.0
 dependencies:
-  - condition: zookeeper.enabled
-    name: zookeeper
-    repository: oci://registry-1.docker.io/bitnamicharts
-    version: 13.x.x
   - name: common
     repository: oci://registry-1.docker.io/bitnamicharts
     tags:
