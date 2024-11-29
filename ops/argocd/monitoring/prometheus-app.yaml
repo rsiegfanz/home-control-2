@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: prometheus
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/rsiegfanz/home-control.git
+    targetRevision: HEAD
+    path: ops/helm/monitoring/prometheus
+    helm:
+      valueFiles:
+        - values.yaml
+      releaseName: prometheus
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: monitoring
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

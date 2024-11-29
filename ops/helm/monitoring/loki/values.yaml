@@ -1,0 +1,88 @@
+loki:
+  auth_enabled: false
+  commonConfig:
+    replication_factor: 1
+
+  storage:
+    type: filesystem
+    filesystem:
+      directory: /var/loki/chunks
+
+  schemaConfig:
+    configs:
+      - from: "2024-04-01"
+        store: tsdb
+        object_store: filesystem
+        schema: v13
+        index:
+          prefix: loki_index_
+          period: 168h
+
+  limits_config:
+    retention_period: 168h
+    ingestion_rate_mb: 4
+    ingestion_burst_size_mb: 6
+    max_global_streams_per_user: 5000
+
+  compactor:
+    retention_enabled: true
+    working_directory: /var/loki/compactor
+    shared_store: filesystem
+
+  ruler:
+    enable_api: true
+
+mode: singleBinary
+
+singleBinary:
+  replicas: 1
+  resources:
+    requests:
+      cpu: "200m"
+      memory: "256Mi"
+    limits:
+      cpu: "1"
+      memory: "1Gi"
+
+backend:
+  replicas: 0
+  enabled: false
+read:
+  replicas: 0
+  enabled: false
+write:
+  replicas: 0
+  enabled: false
+ingester:
+  replicas: 0
+  enabled: false
+querier:
+  replicas: 0
+  enabled: false
+queryFrontend:
+  replicas: 0
+  enabled: false
+queryScheduler:
+  replicas: 0
+  enabled: false
+distributor:
+  replicas: 0
+  enabled: false
+compactor:
+  replicas: 0
+  enabled: false
+indexGateway:
+  replicas: 0
+  enabled: false
+bloomCompactor:
+  replicas: 0
+  enabled: false
+bloomGateway:
+  replicas: 0
+  enabled: false
+gateway:
+  enabled: false
+
+persistence:
+  enabled: true
+  existingClaim: loki-pv-claim

@@ -1,0 +1,9 @@
+apiVersion: v2
+name: promtail
+description: Promtail Helm Chart Configuration
+type: application
+version: 1.0.0
+dependencies:
+  - name: promtail
+    version: 6.15.0
+    repository: https://grafana.github.io/helm-charts

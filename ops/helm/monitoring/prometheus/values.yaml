@@ -1,0 +1,11 @@
+prometheus:
+  server:
+    persistentVolume:
+      enabled: true
+      claimName: prometheus-pv-claim
+      size: 10Gi
+  alertmanager:
+    persistentVolume:
+      enabled: true
+      claimName: prometheus-pv-claim
+      size: 2Gi

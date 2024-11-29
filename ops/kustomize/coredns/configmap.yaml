@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: coredns-config
+  namespace: kube-system
+data:
+  Corefile: |
+    .:53 {
+        errors
+        health
+        ready
+        kubernetes cluster.local in-addr.arpa ip6.arpa {
+            pods insecure
+            fallthrough in-addr.arpa ip6.arpa
+        }
+        forward . 8.8.8.8 8.8.4.4 1.1.1.1
+        cache 30
+        loop
+        reload
+        loadbalance
+    }
+    home:53 {
+        file /etc/coredns/home.db
+        errors
+        cache 30
+        reload 10s
+    }
+  home.db: |
+    $ORIGIN home.
+    @       3600 IN SOA dns.home. admin.home. (
+            2023112801 ; serial
+            7200       ; refresh
+            3600       ; retry
+            1209600    ; expire
+            3600       ; minimum
+    )
+    @       3600 IN NS  dns.home.
+
+    *.home. IN A      192.168.1.240
+    test     IN A     192.168.1.241
+    dns      IN A     10.152.183.10
+    argocd   IN A     192.168.1.241
