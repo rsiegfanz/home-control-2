@@ -33,6 +33,10 @@ var namespaces = map[string]pulumi.StringMap{
 		"type":       pulumi.String("infrastructure"),
 		"managed-by": pulumi.String("pulumi"),
 	},
+	"kafka": {
+		"type":       pulumi.String("infrastructure"),
+		"managed-by": pulumi.String("pulumi"),
+	},
 }
 
 type NetworkPolicyConfig struct {
