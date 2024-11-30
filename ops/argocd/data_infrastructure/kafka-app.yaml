@@ -15,7 +15,7 @@ spec:
       releaseName: kafka
   destination:
     server: https://kubernetes.default.svc
-    namespace: data-infrastructure
+    namespace: kafka
   syncPolicy:
     automated:
       prune: true
