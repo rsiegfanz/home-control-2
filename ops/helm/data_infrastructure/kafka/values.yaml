@@ -1,10 +1,13 @@
-# Kafka Helm Chart Configuration for Single Pod in KRaft Mode
-
 replicaCount: 1
 
 kafka:
   enabled: true
   mode: kraft
+
+  controller:
+    replicaCount: 1
+    persistence:
+      enabled: false
 
   kraft:
     enabled: true
@@ -13,10 +16,13 @@ kafka:
   resources:
     requests:
       cpu: "200m"
-      memory: "512Mi"
+      memory: "256Mi"
     limits:
       cpu: "1"
-      memory: "1Gi"
+      memory: "512Mi"
+
+  volumeClaimTemplate:
+    enabled: false
 
   storage:
     storageClassName: ""
@@ -28,8 +34,6 @@ kafka:
   listeners:
     external:
       enabled: false
-      port: 9094
-      type: ClusterIP
     internal:
       enabled: true
       port: 9093
