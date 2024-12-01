@@ -37,6 +37,14 @@ var namespaces = map[string]pulumi.StringMap{
 		"type":       pulumi.String("infrastructure"),
 		"managed-by": pulumi.String("pulumi"),
 	},
+	"redis": {
+		"type":       pulumi.String("infrastructure"),
+		"managed-by": pulumi.String("pulumi"),
+	},
+	"postgres": {
+		"type":       pulumi.String("infrastructure"),
+		"managed-by": pulumi.String("pulumi"),
+	},
 }
 
 type NetworkPolicyConfig struct {
