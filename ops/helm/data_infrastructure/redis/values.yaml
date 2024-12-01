@@ -1,0 +1,28 @@
+replicaCount: 1
+
+redis:
+  enabled: true
+  architecture: standalone
+  auth:
+    enabled: true
+
+  master:
+    resources:
+      requests:
+        cpu: "100m"
+        memory: "256Mi"
+      limits:
+        cpu: "500m"
+        memory: "512Mi"
+
+    persistence:
+      enabled: true
+      existingClaim: redis-pv-claim
+      storageClassName: ""
+
+  sentinel:
+    enabled: false
+  replica:
+    replicaCount: 0
+  metrics:
+    enabled: false

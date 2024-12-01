@@ -1,0 +1,41 @@
+replicaCount: 1
+
+postgresql:
+  enabled: true
+  architecture: standalone
+
+  resources:
+    requests:
+      cpu: "200m"
+      memory: "512Mi"
+    limits:
+      cpu: "1"
+      memory: "1Gi"
+
+  persistence:
+    enabled: true
+    storageClassName: ""
+    existingClaim: postgres-pv-claim
+    size: 10Gi
+
+  initdbScripts:
+    enable-timescaledb.sql: |
+      CREATE EXTENSION IF NOT EXISTS timescaledb CASCADE;
+
+  postgresqlConfiguration:
+    shared_preload_libraries: timescaledb
+    max_connections: 100
+
+  auth:
+    enablePostgresUser: true
+    postgresPassword: "your-secure-password"
+    database: homecontrol
+
+  primary:
+    extraVolumeMounts:
+      - name: initdb-scripts
+        mountPath: /docker-entrypoint-initdb.d
+    extraVolumes:
+      - name: initdb-scripts
+        configMap:
+          name: {{ .Release.Name }}-initdb-scripts

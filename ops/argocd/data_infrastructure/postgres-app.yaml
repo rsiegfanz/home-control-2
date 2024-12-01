@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: postgres
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/rsiegfanz/home-control-2.git
+    targetRevision: HEAD
+    path: ops/helm/data_infrastructure/postgres
+    helm:
+      valueFiles:
+        - values.yaml
+      releaseName: postgres
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: postgres
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

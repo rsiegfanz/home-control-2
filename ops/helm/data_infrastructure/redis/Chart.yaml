@@ -1,0 +1,10 @@
+apiVersion: v2
+name: home-control-redis
+description: A Helm chart for deploying Redis in home-control-cluster
+version: 0.1.0
+appVersion: "1.0.0"
+
+dependencies:
+  - name: redis
+    version: 20.3.0
+    repository: "https://charts.bitnami.com/bitnami"
