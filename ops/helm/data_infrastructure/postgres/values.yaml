@@ -28,7 +28,7 @@ postgresql:
 
   auth:
     enablePostgresUser: true
-    postgresPassword: "your-secure-password"
+    postgresPassword: "pw"
     database: homecontrol
 
   primary:
@@ -38,4 +38,4 @@ postgresql:
     extraVolumes:
       - name: initdb-scripts
         configMap:
-          name: {{ .Release.Name }}-initdb-scripts
+          name: postgres-initdb-scripts
