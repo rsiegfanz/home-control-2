@@ -32,6 +32,11 @@ postgresql:
     database: homecontrol
 
   primary:
+    persistence:
+      enabled: true
+      storageClassName: ""
+      existingClaim: postgres-pv-claim
+      size: 10Gi
     extraVolumeMounts:
       - name: initdb-scripts
         mountPath: /docker-entrypoint-initdb.d
