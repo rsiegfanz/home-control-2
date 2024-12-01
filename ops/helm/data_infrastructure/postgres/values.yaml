@@ -42,5 +42,4 @@ postgresql:
         mountPath: /docker-entrypoint-initdb.d
     extraVolumes:
       - name: initdb-scripts
-        configMap:
-          name: postgres-initdb-scripts
+        emptyDir: {}
