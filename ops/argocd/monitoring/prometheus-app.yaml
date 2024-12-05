@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/rsiegfanz/home-control.git
     targetRevision: HEAD
-    path: ops/helm/monitoring/prometheus
+    path: ops/dependencies/monitoring/prometheus
     helm:
       valueFiles:
         - values.yaml

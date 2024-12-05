@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fetcher-deployment
+  namespace: home-control
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fetcher
+  template:
+    metadata:
+      labels:
+        app: fetcher
+    spec:
+      containers:
+        - name: fetcher
+          image: rsiegfanz/home-control-fetcher:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 256Mi
+          env:
+            - name: ENVIRONMENT
+              value: production
+            - name: KAFKA_BOOTSTRAP_SERVERS
+              value: kafka-service.kafka.svc.cluster.local:9093
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 20
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10

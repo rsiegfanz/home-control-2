@@ -6,9 +6,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/rsiegfanz/home-control-2.git
+    repoURL: https://github.com/rsiegfanz/home-control.git
     targetRevision: HEAD
-    path: ops/helm/data_infrastructure/redis
+    path: ops/dependencies/data_infrastructure/redis
     helm:
       valueFiles:
         - values.yaml

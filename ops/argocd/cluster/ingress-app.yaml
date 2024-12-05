@@ -1,21 +1,16 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: grafana
+  name: ingress
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: https://github.com/rsiegfanz/home-control.git
+    path: ops/dependencies/cluster/ingress/
     targetRevision: HEAD
-    path: ops/dependencies/monitoring/grafana
-    helm:
-      valueFiles:
-        - values.yaml
-      releaseName: grafana
   destination:
     server: https://kubernetes.default.svc
-    namespace: monitoring
   syncPolicy:
     automated:
       prune: true

@@ -1,21 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: grafana
+  name: ingestor
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: https://github.com/rsiegfanz/home-control.git
+    path: ops/apps/backend/ingestor/
     targetRevision: HEAD
-    path: ops/dependencies/monitoring/grafana
-    helm:
-      valueFiles:
-        - values.yaml
-      releaseName: grafana
   destination:
     server: https://kubernetes.default.svc
-    namespace: monitoring
+    namespace: home-control
   syncPolicy:
     automated:
       prune: true

@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/rsiegfanz/home-control.git
     targetRevision: HEAD
-    path: ops/helm/monitoring/promtail
+    path: ops/dependencies/monitoring/promtail
     helm:
       valueFiles:
         - values.yaml

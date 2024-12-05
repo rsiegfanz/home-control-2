@@ -1,21 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: grafana
+  name: metallb
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: https://github.com/rsiegfanz/home-control.git
+    path: ops/dependencies/cluster/metallb/
     targetRevision: HEAD
-    path: ops/dependencies/monitoring/grafana
-    helm:
-      valueFiles:
-        - values.yaml
-      releaseName: grafana
   destination:
     server: https://kubernetes.default.svc
-    namespace: monitoring
+    namespace: metallb-system
   syncPolicy:
     automated:
       prune: true

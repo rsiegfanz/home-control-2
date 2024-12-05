@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/rsiegfanz/home-control.git
     targetRevision: HEAD
-    path: ops/helm/monitoring/loki
+    path: ops/dependencies/monitoring/loki
     helm:
       valueFiles:
         - values.yaml
