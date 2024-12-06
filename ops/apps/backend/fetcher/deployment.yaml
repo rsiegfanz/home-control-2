@@ -29,7 +29,7 @@ spec:
           volumeMounts:
             - name: log-volume
               mountPath: /var/log
-    volumes:
-      - name: log-volume
-        persistentVolumeClaim:
-          claimName: fetcher-pv-claim
+      volumes:
+        - name: log-volume
+          persistentVolumeClaim:
+            claimName: fetcher-pv-claim
