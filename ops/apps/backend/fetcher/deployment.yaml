@@ -23,6 +23,8 @@ spec:
           envFrom:
             - configMapRef:
                 name: fetcher-config
+            - secretRef:
+                name: fetcher-secrets
           ports:
             - containerPort: 8080
           resources:

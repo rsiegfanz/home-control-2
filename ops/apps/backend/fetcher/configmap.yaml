@@ -4,7 +4,6 @@ metadata:
   name: fetcher-config
   namespace: home-control
 data:
-  URL: "xx"
   MODUS: "climate_current"
   POSTGRES_HOST: "timescaledb"
   POSTGRES_PORT: "5432"
