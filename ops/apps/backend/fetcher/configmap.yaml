@@ -10,4 +10,5 @@ data:
   POSTGRES_PORT: "5432"
   POSTGRES_DBNAME: "homecontrol"
   POSTGRES_USER: "home_control_user"
+  POSTGRES_PASSWORD: pw
   KAFKA_HOST: kafka-service.kafka.svc.cluster.local:29092
