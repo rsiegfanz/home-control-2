@@ -26,20 +26,10 @@ spec:
             limits:
               cpu: 500m
               memory: 256Mi
-          env:
-            - name: ENVIRONMENT
-              value: production
-            - name: KAFKA_BOOTSTRAP_SERVERS
-              value: kafka-service.kafka.svc.cluster.local:9093
-          livenessProbe:
-            httpGet:
-              path: /health
-              port: 8080
-            initialDelaySeconds: 15
-            periodSeconds: 20
-          readinessProbe:
-            httpGet:
-              path: /ready
-              port: 8080
-            initialDelaySeconds: 5
-            periodSeconds: 10
+          volumeMounts:
+            - name: log-volume
+              mountPath: /var/log
+    volumes:
+      - name: log-volume
+        persistentVolumeClaim:
+          claimName: home-control-share-pvc

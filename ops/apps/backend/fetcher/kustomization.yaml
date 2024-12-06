@@ -5,6 +5,8 @@ kind: Kustomization
 namespace: home-control
 
 resources:
+  - persistent-volume.yaml
+  - persistent-volume-claim.yaml
   - configmap.yaml
   - deployment.yaml
   - service.yaml
