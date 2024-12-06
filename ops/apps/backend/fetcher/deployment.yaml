@@ -32,4 +32,4 @@ spec:
     volumes:
       - name: log-volume
         persistentVolumeClaim:
-          claimName: home-control-share-pvc
+          claimName: fetcher-pv-claim
