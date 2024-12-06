@@ -17,6 +17,9 @@ spec:
         - name: fetcher
           image: rsiegfanz/home-control-fetcher:latest
           imagePullPolicy: Always
+          securityContext:
+            runAsUser: 1001
+            runAsGroup: 1001
           ports:
             - containerPort: 8080
           resources:
