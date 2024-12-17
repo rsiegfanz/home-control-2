@@ -4,4 +4,4 @@ metadata:
   name: kafka-connection-config
   namespace: home-control
 data:
-  KAFKA_HOST: kafka-controller-0.kafka-controller-headless.kafka.svc.cluster.local:9093
+  KAFKA_HOST: kafka-controller-0.kafka-controller-headless.kafka.svc.cluster.local:9092
