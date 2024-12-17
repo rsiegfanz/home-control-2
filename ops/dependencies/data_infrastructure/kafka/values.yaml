@@ -34,15 +34,19 @@ kafka:
   listeners:
     internal:
       enabled: true
-      port: 9093
+      port: 9092
     external:
       enabled: false
 
-  interBrokerProtocol: PLAINTEXT
-  authProtocol: PLAINTEXT
-
-  networkPolicy:
+  auth:
     enabled: false
+
+  sasl:
+    enabled: false
+
+  security:
+    interBrokerProtocol: PLAINTEXT
+    protocol: PLAINTEXT
 
   schemaRegistry:
     enabled: false
