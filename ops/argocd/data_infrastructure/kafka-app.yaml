@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/rsiegfanz/home-control.git
+    repoURL: https://github.com/rsiegfanz/home-control-2.git
     targetRevision: HEAD
     path: ops/dependencies/data_infrastructure/kafka
     helm:
