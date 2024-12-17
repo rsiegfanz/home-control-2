@@ -37,6 +37,7 @@ kafka:
       port: 9092
     external:
       enabled: false
+    securityProtocolMap: CLIENT:PLAINTEXT,INTERNAL:PLAINTEXT,CONTROLLER:PLAINTEXT
 
   auth:
     enabled: false
@@ -47,7 +48,6 @@ kafka:
   security:
     interBrokerProtocol: PLAINTEXT
     protocol: PLAINTEXT
-    listenerSecurityProtocolMap: "CLIENT:PLAINTEXT,INTERNAL:PLAINTEXT,CONTROLLER:PLAINTEXT"
 
   schemaRegistry:
     enabled: false
