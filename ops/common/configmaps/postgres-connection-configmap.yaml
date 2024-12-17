@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-connection-config
+  namespace: home-control
+data:
+  POSTGRES_HOST: postgres-postgresql.postgres.svc.cluster.local
+  POSTGRES_PORT: "5432"
+  POSTGRES_DBNAME: "homecontrol"
+  POSTGRES_USER: "homecontrol"
+  POSTGRES_PASSWORD: x

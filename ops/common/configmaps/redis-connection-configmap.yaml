@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: redis-connection-config
+  namespace: home-control
+data:
+  REDIS_HOST: redis-master.redis.svc.cluster.local:6379
+  REDIS_PASSWORD: x
+  REDIS_DB: "0"

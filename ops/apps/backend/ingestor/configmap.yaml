@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: fetcher-config
+  name: ingestor-config
   namespace: home-control
 data:
-  MODUS: "climate_current"
+  X: "X"

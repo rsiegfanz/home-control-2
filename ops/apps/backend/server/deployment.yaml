@@ -1,36 +1,36 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: fetcher-deployment
+  name: server-deployment
   namespace: home-control
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: fetcher
+      app: server
   template:
     metadata:
       labels:
-        app: fetcher
+        app: server
     spec:
+      imagePullSecrets:
+        - name: docker-secrets
       containers:
-        - name: fetcher
-          image: rsiegfanz/home-control-fetcher:latest
+        - name: server
+          image: rsiegfanz/home-control-server:latest
           imagePullPolicy: Always
           securityContext:
             runAsUser: 1001
             runAsGroup: 1001
           envFrom:
             - configMapRef:
-                name: fetcher-config
+                name: server-config
             - configMapRef:
                 name: kafka-connection-config
             - configMapRef:
                 name: redis-connection-config
             - configMapRef:
                 name: postgres-connection-config
-            - secretRef:
-                name: fetcher-secrets
           ports:
             - containerPort: 8080
           resources:
@@ -46,4 +46,4 @@ spec:
       volumes:
         - name: log-volume
           persistentVolumeClaim:
-            claimName: fetcher-pv-claim
+            claimName: server-pv-claim

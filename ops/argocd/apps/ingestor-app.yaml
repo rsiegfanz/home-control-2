@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/rsiegfanz/home-control-2.git
+    repoURL: https://github.com/rsiegfanz/home-control.git
     path: ops/apps/backend/ingestor/
     targetRevision: HEAD
   destination:

@@ -8,20 +8,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   storageClassName: ""
+  persistentVolumeReclaimPolicy: Retain
   nfs:
     server: 192.168.1.100
     path: /srv/nfs_shared_folder/k8s/kafka
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: kafka-pv-claim
-  namespace: kafka
-spec:
-  storageClassName: ""
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 10Gi
-  volumeName: kafka-pv

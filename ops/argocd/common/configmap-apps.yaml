@@ -1,13 +1,13 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: server
+  name: configmaps
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: https://github.com/rsiegfanz/home-control.git
-    path: ops/apps/backend/server/
+    path: ops/common/configmaps/
     targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc

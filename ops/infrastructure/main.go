@@ -96,6 +96,16 @@ func createNetworkPolicy(ctx *pulumi.Context, config NetworkPolicyConfig) error 
 					},
 					Ports: createNetworkPolicyPorts(config.ports, config.protocols),
 				},
+
+				&networkingv1.NetworkPolicyEgressRuleArgs{
+					To: networkingv1.NetworkPolicyPeerArray{
+						&networkingv1.NetworkPolicyPeerArgs{
+							IpBlock: &networkingv1.IPBlockArgs{
+								Cidr: pulumi.String("0.0.0.0/0"),
+							},
+						},
+					},
+				},
 			},
 		},
 	})

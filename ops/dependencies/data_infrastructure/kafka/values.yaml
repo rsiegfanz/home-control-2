@@ -32,11 +32,17 @@ kafka:
     existingClaim: kafka-pv-claim
 
   listeners:
-    external:
-      enabled: false
     internal:
       enabled: true
       port: 9093
+    external:
+      enabled: false
+
+  interBrokerProtocol: PLAINTEXT
+  authProtocol: PLAINTEXT
+
+  networkPolicy:
+    enabled: false
 
   schemaRegistry:
     enabled: false
